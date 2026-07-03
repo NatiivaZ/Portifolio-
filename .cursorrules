@@ -1,0 +1,21 @@
+# Regras do Projeto - Portfólio Local
+
+## Uso
+
+Projeto para edição e visualização **local apenas**.
+
+- Porta de desenvolvimento: **3002**
+- Comando: `npm run dev`
+- URL: http://localhost:3002
+
+## Onde editar
+
+- **Textos e dados pessoais:** `data/site-content.ts`
+- **Projetos:** `data/projects.json`
+- **Imagens:** `public/images/`
+
+## Regras
+
+- Perguntar antes de criar arquivos ou pastas novas
+- Manter alterações focadas no que foi pedido
+- Responder em português
