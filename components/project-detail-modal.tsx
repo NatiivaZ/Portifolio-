@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ExternalLink } from "lucide-react"
+import { ExternalLink, Github } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import {
   Dialog,
@@ -114,15 +114,29 @@ export function ProjectDetailModal({
           </div>
         )}
 
-        {project.links?.live && (
-          <Link
-            href={project.links.live}
-            target="_blank"
-            className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300"
-          >
-            <ExternalLink size={16} />
-            Ver projeto ao vivo
-          </Link>
+        {(project.links?.github || project.links?.live) && (
+          <div className="flex flex-wrap gap-4 pt-2">
+            {project.links?.github && (
+              <Link
+                href={project.links.github}
+                target="_blank"
+                className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300"
+              >
+                <Github size={16} />
+                Ver no GitHub
+              </Link>
+            )}
+            {project.links?.live && (
+              <Link
+                href={project.links.live}
+                target="_blank"
+                className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300"
+              >
+                <ExternalLink size={16} />
+                Ver projeto ao vivo
+              </Link>
+            )}
+          </div>
         )}
       </DialogContent>
     </Dialog>

@@ -1,9 +1,291 @@
 {
   "projects": [
     {
+      "id": "api-serasa-pefin",
+      "title": "API SERASA · PEFIN em Massa",
+      "image": "",
+      "color": "#0EA5E9",
+      "description": {
+        "pt": "Plataforma completa de inclusão e exclusão PEFIN em massa: NestJS, Next.js, filas, webhooks e dashboard em tempo real.",
+        "en": "Full PEFIN bulk inclusion/exclusion platform: NestJS, Next.js, queues, webhooks and real-time dashboard.",
+        "es": "Plataforma completa de inclusión/exclusión PEFIN en masa: NestJS, Next.js, colas, webhooks y dashboard."
+      },
+      "longDescription": {
+        "pt": "Plataforma full-stack para negativação PEFIN em massa no contexto CCOBI/ANTT. Backend NestJS com autenticação, filas, rate limit e webhooks; frontend Next.js com acompanhamento de lotes e status em tempo real. Ambientes de homologação e produção, com arquitetura pensada para rastreabilidade operacional.",
+        "en": "Full-stack platform for bulk PEFIN negativation in the CCOBI/ANTT context. NestJS backend with auth, queues, rate limiting and webhooks; Next.js frontend with real-time batch tracking. Homologation and production environments designed for operational traceability.",
+        "es": "Plataforma full-stack para negativación PEFIN en masa en el contexto CCOBI/ANTT. Backend NestJS con auth, colas, rate limit y webhooks; frontend Next.js con seguimiento en tiempo real."
+      },
+      "technologies": ["TypeScript", "NestJS", "Next.js", "Prisma", "SQLite"],
+      "features": {
+        "pt": [
+          "Inclusão e exclusão PEFIN em lote com fila e rate limit",
+          "Dashboard em tempo real com status por documento",
+          "Webhooks para retorno assíncrono de processamento",
+          "Separação clara entre homologação e produção"
+        ],
+        "en": [
+          "Bulk PEFIN inclusion/exclusion with queue and rate limit",
+          "Real-time dashboard with per-document status",
+          "Webhooks for asynchronous processing feedback",
+          "Clear separation between homologation and production"
+        ],
+        "es": [
+          "Inclusión/exclusión PEFIN en lote con cola y rate limit",
+          "Dashboard en tiempo real con status por documento",
+          "Webhooks para retorno asíncrono",
+          "Separación entre homologación y producción"
+        ]
+      },
+      "howItWorks": {
+        "pt": [
+          "O operador sobe o lote e configura o ambiente (homologação ou produção).",
+          "A API autentica, enfileira as requisições e aplica rate limit.",
+          "Cada documento recebe status rastreável no dashboard.",
+          "Webhooks e exportações consolidam o resultado do processamento."
+        ],
+        "en": [
+          "Operator uploads the batch and selects the environment.",
+          "API authenticates, queues requests and applies rate limiting.",
+          "Each document gets a traceable status on the dashboard.",
+          "Webhooks and exports consolidate processing results."
+        ],
+        "es": [
+          "El operador sube el lote y elige el ambiente.",
+          "La API autentica, encola y aplica rate limit.",
+          "Cada documento recibe status rastreable.",
+          "Webhooks y exportaciones consolidan el resultado."
+        ]
+      },
+      "codeSnippet": "async processBatch(batchId: string) {\n  const jobs = await this.queue.addBulk(documents.map(d => ({\n    name: 'pefin-include',\n    data: { batchId, document: d },\n  })));\n  return { enqueued: jobs.length };\n}",
+      "codeLanguage": "typescript",
+      "codeFilename": "negativacao.service.ts",
+      "category": "marketing",
+      "status": "completed",
+      "year": "2025",
+      "context": "CCOBI · Destaque",
+      "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
+      "links": { "github": "https://github.com/NatiivaZ/ccobi-api-serasa-pefin" },
+      "order": 1
+    },
+    {
+      "id": "comparacao-serasa-divida-ativa",
+      "title": "Comparador SERASA × Dívida Ativa",
+      "image": "",
+      "color": "#0891B2",
+      "description": {
+        "pt": "App web Streamlit para análise de autos ANTT: upload SERASA e Dívida Ativa, comparação, gráficos Plotly e exportação Excel.",
+        "en": "Streamlit web app for ANTT records: SERASA and Active Debt upload, comparison, Plotly charts and Excel export.",
+        "es": "App web Streamlit para autos ANTT: upload SERASA y Deuda Activa, comparación, gráficos Plotly y exportación Excel."
+      },
+      "longDescription": {
+        "pt": "Aplicação web em Streamlit para análise comparativa entre a base SERASA e a base de Dívida Ativa da ANTT. Permite configurar colunas, cruza os dados e gera gráficos interativos com Plotly além de exportação em Excel formatada.",
+        "en": "Streamlit web application for comparative analysis between SERASA and ANTT Active Debt databases. Configurable columns, data cross-referencing, Plotly charts and formatted Excel export.",
+        "es": "Aplicación web Streamlit para análisis comparativo entre base SERASA y Deuda Activa de ANTT."
+      },
+      "technologies": ["Python", "Streamlit", "Pandas", "Plotly", "Excel"],
+      "features": {
+        "pt": ["Upload de planilhas SERASA e Dívida Ativa", "Configuração flexível de colunas", "Cruzamento e identificação de divergências", "Gráficos Plotly e exportação Excel formatada"],
+        "en": ["SERASA and Active Debt spreadsheet upload", "Flexible column configuration", "Cross-referencing and divergence detection", "Plotly charts and formatted Excel export"],
+        "es": ["Upload de planillas SERASA y Deuda Activa", "Configuración flexible de columnas", "Cruce e identificación de divergencias", "Gráficos Plotly y exportación Excel"]
+      },
+      "howItWorks": {
+        "pt": ["Upload das duas planilhas na sidebar.", "Ajuste dos nomes das colunas.", "Cruzamento das bases pelo auto.", "Métricas, gráficos e exportação Excel."],
+        "en": ["Upload both spreadsheets in sidebar.", "Adjust column names.", "Cross-reference by record ID.", "Metrics, charts and Excel export."],
+        "es": ["Upload de ambas planillas.", "Ajuste de nombres de columnas.", "Cruce por auto.", "Métricas, gráficos y exportación."]
+      },
+      "codeSnippet": "arquivo_serasa = st.file_uploader(\"Selecione a planilha SERASA\", type=['xlsx', 'xls', 'csv'])\ncoluna_auto = st.text_input(\"Nome da coluna Auto\", value=\"Identificador do Débito\")",
+      "codeLanguage": "python",
+      "codeFilename": "app.py",
+      "category": "marketing",
+      "status": "completed",
+      "year": "2024",
+      "context": "CCOBI · 2024",
+      "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
+      "links": { "github": "https://github.com/NatiivaZ/ccobi-sistema-comparacao-serasa" },
+      "order": 2
+    },
+    {
+      "id": "comparacao-bases-vencimento",
+      "title": "Filtro de Vencimentos · Dívida Ativa",
+      "image": "",
+      "color": "#CA8A04",
+      "description": {
+        "pt": "Streamlit para comparar bases antiga x nova por ano de vencimento. Histórico SQLite e exportação Excel.",
+        "en": "Streamlit to compare old vs new databases by due year. SQLite history and Excel export.",
+        "es": "Streamlit para comparar bases antigua x nueva por año de vencimiento. Historial SQLite."
+      },
+      "longDescription": {
+        "pt": "Aplicação Streamlit que compara base antiga com nova, extrai ano de vencimento e mostra quantos autos saíram e entraram por ano. Cada execução salva em SQLite com histórico de exportações.",
+        "en": "Streamlit app comparing old and new databases by due year, tracking entries and exits per year with SQLite history.",
+        "es": "App Streamlit que compara bases por año de vencimiento con historial SQLite."
+      },
+      "technologies": ["Python", "Streamlit", "SQLite", "Pandas", "Excel"],
+      "features": {
+        "pt": ["Comparação base antiga x nova por ano", "Cálculo de autos que saíram e entraram", "Histórico em SQLite", "Exportação Excel na pasta historico_exportacoes"],
+        "en": ["Old vs new database comparison by year", "Records entered and exited calculation", "SQLite history", "Excel export to history folder"],
+        "es": ["Comparación base antigua x nueva", "Cálculo de autos que salieron/entraron", "Historial SQLite", "Exportación Excel"]
+      },
+      "howItWorks": {
+        "pt": ["Upload das duas planilhas.", "Sistema adiciona coluna Ano pelo vencimento.", "Cruza bases e calcula saídas/entradas por ano.", "Salva execução no SQLite e exporta Excel."],
+        "en": ["Upload both spreadsheets.", "System adds Year column from due date.", "Cross-references and calculates per year.", "Saves to SQLite and exports Excel."],
+        "es": ["Upload de planillas.", "Agrega columna Año.", "Cruza y calcula por año.", "Guarda en SQLite y exporta."]
+      },
+      "codeSnippet": "CREATE TABLE IF NOT EXISTS comparacoes (\n    id TEXT PRIMARY KEY,\n    data_hora TEXT NOT NULL,\n    total_sairam INTEGER NOT NULL,\n    total_entraram INTEGER NOT NULL\n)",
+      "codeLanguage": "python",
+      "codeFilename": "historico_db.py",
+      "category": "marketing",
+      "status": "completed",
+      "year": "2024",
+      "context": "CCOBI · 2024",
+      "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
+      "links": { "github": "https://github.com/NatiivaZ/ccobi-filtro-vencimento-divida" },
+      "order": 3
+    },
+    {
+      "id": "reclassificador-exportacoes-serasa",
+      "title": "Reclassificador · Exportações SERASA",
+      "image": "",
+      "color": "#059669",
+      "description": {
+        "pt": "Streamlit que reclassifica exportações SERASA por faixa de valor (soma por CPF/CNPJ) com downloads separados.",
+        "en": "Streamlit that reclassifies SERASA exports by value range (sum per CPF/CNPJ) with separate downloads.",
+        "es": "Streamlit que reclasifica exportaciones SERASA por rango de valor."
+      },
+      "longDescription": {
+        "pt": "Ferramenta para pós-processamento de exportações SERASA. Detecta colunas, recalcula soma por documento e gera arquivos Excel por faixa de valor.",
+        "en": "Post-processing tool for SERASA exports with per-document value summation and range-based Excel files.",
+        "es": "Herramienta de post-procesamiento de exportaciones SERASA por rango de valor."
+      },
+      "technologies": ["Python", "Streamlit", "Pandas", "Openpyxl", "Excel"],
+      "features": {
+        "pt": ["Upload planilha Excel tratada", "Agrupamento por CPF/CNPJ normalizado", "Faixas: até R$999, R$500-999, acima R$1000", "Downloads separados por faixa"],
+        "en": ["Treated Excel upload", "Normalized CPF/CNPJ grouping", "Value ranges with separate files", "Per-range downloads"],
+        "es": ["Upload Excel tratado", "Agrupamiento CPF/CNPJ", "Rangos de valor", "Descargas separadas"]
+      },
+      "howItWorks": {
+        "pt": ["Upload da planilha na interface Streamlit.", "Confirma colunas Auto, CPF/CNPJ e Valor.", "Agrupa por documento e soma valores.", "Baixa arquivos por faixa e resumo."],
+        "en": ["Upload spreadsheet in Streamlit.", "Confirm Auto, CPF/CNPJ and Value columns.", "Group by document and sum values.", "Download per-range files."],
+        "es": ["Upload planilla.", "Confirma columnas.", "Agrupa y suma.", "Descarga por rango."]
+      },
+      "codeSnippet": "def normalizar_cpf_cnpj(valor):\n    digitos = re.sub(r\"\\D\", \"\", str(valor).strip())\n    return digitos if digitos else None",
+      "codeLanguage": "python",
+      "codeFilename": "app.py",
+      "category": "marketing",
+      "status": "completed",
+      "year": "2024",
+      "context": "CCOBI · 2024",
+      "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
+      "links": { "github": "https://github.com/NatiivaZ/ccobi-reclassificador-exportacoes-serasa" },
+      "order": 4
+    },
+    {
+      "id": "inclusao-cadin",
+      "title": "Inclusão CADIN · Lote",
+      "image": "",
+      "color": "#9333EA",
+      "description": {
+        "pt": "Inclusão de apontamentos no CADIN a partir de planilha. Chrome logado ou nodriver, checkpoint CSV e Excel formatado.",
+        "en": "CADIN record inclusion from spreadsheet. Logged Chrome or nodriver, CSV checkpoint and formatted Excel.",
+        "es": "Inclusión de apuntes en CADIN desde planilla. Chrome logado, checkpoint CSV y Excel."
+      },
+      "longDescription": {
+        "pt": "Automação para cadastro CADIN com gov.br: lê planilha, preenche campos de inclusão e registra status. Suporta Chrome já logado, modo teste, PyInstaller para .exe.",
+        "en": "CADIN registration automation with gov.br: reads spreadsheet, fills inclusion fields and logs status.",
+        "es": "Automatización CADIN con gov.br: lee planilla y registra status."
+      },
+      "technologies": ["Python", "Tkinter", "PyInstaller", "CADIN"],
+      "features": {
+        "pt": ["Leitura planilha CPF/CNPJ, protocolo, auto, vencimento", "Modo Chrome logado com calibração mouse/teclado", "Modo teste e checkpoint CSV", "Exportação Excel em resultados/"],
+        "en": ["Spreadsheet reading with all required fields", "Logged Chrome mode with mouse calibration", "Test mode and CSV checkpoint", "Excel export to results/"],
+        "es": ["Lectura planilla completa", "Modo Chrome logado", "Modo teste y checkpoint CSV", "Exportación Excel"]
+      },
+      "howItWorks": {
+        "pt": ["Abre CADIN no Chrome e faz login gov.br.", "Calibra posições dos campos na interface.", "Para cada linha: cola valores e clica Incluir.", "Checkpoint CSV e Excel final em resultados/."],
+        "en": ["Open CADIN in Chrome with gov.br login.", "Calibrate field positions.", "For each row: paste values and click Include.", "CSV checkpoint and final Excel."],
+        "es": ["Abre CADIN y login gov.br.", "Calibra posiciones.", "Para cada línea: pega valores.", "Checkpoint CSV y Excel final."]
+      },
+      "codeSnippet": "@dataclass\nclass ResultadoInclusao:\n    status: str\n    mensagem: str\n    tentativas: int",
+      "codeLanguage": "python",
+      "codeFilename": "automacao_cadin.py",
+      "category": "product",
+      "status": "completed",
+      "year": "2024",
+      "context": "CCOBI · 2024",
+      "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
+      "links": { "github": "https://github.com/NatiivaZ/ccobi-inclusao-cadin" },
+      "order": 5
+    },
+    {
+      "id": "baixas-cadin",
+      "title": "Baixas Jurídicas · CADIN",
+      "image": "",
+      "color": "#7C3AED",
+      "description": {
+        "pt": "Automação de baixas jurídicas no CADIN via Consulta Credora: planilha, status por linha e exportação formatada.",
+        "en": "CADIN legal write-off automation via Consulta Credora: spreadsheet, per-line status and formatted export.",
+        "es": "Automatización de bajas jurídicas en CADIN vía Consulta Credora: planilla, status y exportación."
+      },
+      "longDescription": {
+        "pt": "Sistema desktop para baixas jurídicas no CADIN (Consulta Credora). Lê planilha com documentos e protocolos, executa o fluxo de baixa, registra resultado por linha e gera Excel de acompanhamento com checkpoint para retomada segura.",
+        "en": "Desktop system for CADIN legal write-offs (Consulta Credora). Reads spreadsheet, runs write-off flow, logs per-line results and exports Excel with checkpoint resume.",
+        "es": "Sistema desktop para bajas jurídicas en CADIN (Consulta Credora), con status por línea y exportación Excel."
+      },
+      "technologies": ["Python", "Tkinter", "Pandas", "Openpyxl", "CADIN"],
+      "features": {
+        "pt": [
+          "Baixas jurídicas em lote a partir de planilha",
+          "Integração com Consulta Credora / CADIN",
+          "Checkpoint e retomada sem reprocessar tudo",
+          "Exportação Excel com status e mensagens"
+        ],
+        "en": [
+          "Bulk legal write-offs from spreadsheet",
+          "Consulta Credora / CADIN integration",
+          "Checkpoint and safe resume",
+          "Excel export with status and messages"
+        ],
+        "es": [
+          "Bajas jurídicas en lote desde planilla",
+          "Integración Consulta Credora / CADIN",
+          "Checkpoint y reanudación segura",
+          "Exportación Excel con status"
+        ]
+      },
+      "howItWorks": {
+        "pt": [
+          "Seleciona a planilha com os apontamentos a baixar.",
+          "O sistema acessa a Consulta Credora e processa cada linha.",
+          "Registra sucesso/falha com mensagem operacional.",
+          "Gera Excel final e mantém checkpoint para retomada."
+        ],
+        "en": [
+          "Select the spreadsheet with records to write off.",
+          "System accesses Consulta Credora and processes each row.",
+          "Logs success/failure with operational message.",
+          "Generates final Excel and keeps a resume checkpoint."
+        ],
+        "es": [
+          "Selecciona la planilla con los apuntes a dar de baja.",
+          "El sistema accede a Consulta Credora y procesa cada línea.",
+          "Registra éxito/falla con mensaje.",
+          "Genera Excel final y checkpoint de reanudación."
+        ]
+      },
+      "codeSnippet": "@dataclass\nclass ResultadoBaixa:\n    status: str\n    mensagem: str\n    protocolo: str",
+      "codeLanguage": "python",
+      "codeFilename": "automacao_credora.py",
+      "category": "product",
+      "status": "completed",
+      "year": "2025",
+      "context": "CCOBI · 2025",
+      "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
+      "links": { "github": "https://github.com/NatiivaZ/ccobi-baixas-cadin" },
+      "order": 6
+    },
+    {
       "id": "automacao-inscricao-serasa",
-      "title": "Automação SIFAMA – Inscrição SERASA",
-      "image": "/images/portfolio/ruann/automacao-inscricao-serasa.jpg",
+      "title": "Inscrição SERASA · SIFAMA/ANTT",
+      "image": "",
       "color": "#2563EB",
       "description": {
         "pt": "Automação integrada no SIFAMA/ANTT: consulta de situação da dívida e inscrição de autos na SERASA. Tkinter, Selenium e retentativas.",
@@ -64,161 +346,13 @@
       "year": "2024",
       "context": "CCOBI · 2024",
       "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
-      "links": {},
-      "order": 1
-    },
-    {
-      "id": "comparacao-serasa-divida-ativa",
-      "title": "Sistema de Comparação SERASA x Dívida Ativa",
-      "image": "/images/portfolio/ruann/comparacao-serasa-divida-ativa.jpg",
-      "color": "#0891B2",
-      "description": {
-        "pt": "App web Streamlit para análise de autos ANTT: upload SERASA e Dívida Ativa, comparação, gráficos Plotly e exportação Excel.",
-        "en": "Streamlit web app for ANTT records: SERASA and Active Debt upload, comparison, Plotly charts and Excel export.",
-        "es": "App web Streamlit para autos ANTT: upload SERASA y Deuda Activa, comparación, gráficos Plotly y exportación Excel."
-      },
-      "longDescription": {
-        "pt": "Aplicação web em Streamlit para análise comparativa entre a base SERASA e a base de Dívida Ativa da ANTT. Permite configurar colunas, cruza os dados e gera gráficos interativos com Plotly além de exportação em Excel formatada.",
-        "en": "Streamlit web application for comparative analysis between SERASA and ANTT Active Debt databases. Configurable columns, data cross-referencing, Plotly charts and formatted Excel export.",
-        "es": "Aplicación web Streamlit para análisis comparativo entre base SERASA y Deuda Activa de ANTT."
-      },
-      "technologies": ["Python", "Streamlit", "Pandas", "Plotly", "Excel"],
-      "features": {
-        "pt": ["Upload de planilhas SERASA e Dívida Ativa", "Configuração flexível de colunas", "Cruzamento e identificação de divergências", "Gráficos Plotly e exportação Excel formatada"],
-        "en": ["SERASA and Active Debt spreadsheet upload", "Flexible column configuration", "Cross-referencing and divergence detection", "Plotly charts and formatted Excel export"],
-        "es": ["Upload de planillas SERASA y Deuda Activa", "Configuración flexible de columnas", "Cruce e identificación de divergencias", "Gráficos Plotly y exportación Excel"]
-      },
-      "howItWorks": {
-        "pt": ["Upload das duas planilhas na sidebar.", "Ajuste dos nomes das colunas.", "Cruzamento das bases pelo auto.", "Métricas, gráficos e exportação Excel."],
-        "en": ["Upload both spreadsheets in sidebar.", "Adjust column names.", "Cross-reference by record ID.", "Metrics, charts and Excel export."],
-        "es": ["Upload de ambas planillas.", "Ajuste de nombres de columnas.", "Cruce por auto.", "Métricas, gráficos y exportación."]
-      },
-      "codeSnippet": "arquivo_serasa = st.file_uploader(\"Selecione a planilha SERASA\", type=['xlsx', 'xls', 'csv'])\ncoluna_auto = st.text_input(\"Nome da coluna Auto\", value=\"Identificador do Débito\")",
-      "codeLanguage": "python",
-      "codeFilename": "app.py",
-      "category": "marketing",
-      "status": "completed",
-      "year": "2024",
-      "context": "CCOBI · 2024",
-      "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
-      "links": {},
-      "order": 2
-    },
-    {
-      "id": "conversor-regati-txt-xlsx",
-      "title": "Conversor REGATI/PEFIN – TXT para XLSX",
-      "image": "/images/portfolio/ruann/conversor-regati-txt-xlsx.jpg",
-      "color": "#16A34A",
-      "description": {
-        "pt": "Converte TXT do REGATI/PEFIN em XLSX padronizado. Validação CPF/CNPJ (Receita Federal), interface Tkinter e CLI.",
-        "en": "Converts REGATI/PEFIN TXT to standardized XLSX. CPF/CNPJ validation, Tkinter GUI and CLI.",
-        "es": "Convierte TXT REGATI/PEFIN a XLSX estandarizado. Validación CPF/CNPJ, interfaz Tkinter y CLI."
-      },
-      "longDescription": {
-        "pt": "Ferramenta para conversão de arquivos TXT exportados do REGATI/PEFIN em planilhas Excel. Colunas detectadas pelo cabeçalho, CPF/CNPJ validado pelo algoritmo da Receita Federal. Interface gráfica ou linha de comando.",
-        "en": "Tool to convert REGATI/PEFIN TXT exports to Excel spreadsheets with official CPF/CNPJ validation.",
-        "es": "Herramienta para convertir TXT REGATI/PEFIN a Excel con validación CPF/CNPJ."
-      },
-      "technologies": ["Python", "Tkinter", "XlsxWriter", "Validação CPF/CNPJ"],
-      "features": {
-        "pt": ["Detecção de colunas pelo cabeçalho do TXT", "Validação CPF/CNPJ módulo 11", "Formatação de máscaras e datas", "Geração XLSX com timestamp no nome"],
-        "en": ["Column detection from TXT header", "CPF/CNPJ module 11 validation", "Mask and date formatting", "XLSX generation with timestamp"],
-        "es": ["Detección de columnas por cabecera", "Validación CPF/CNPJ módulo 11", "Formato de máscaras y fechas", "Generación XLSX con timestamp"]
-      },
-      "howItWorks": {
-        "pt": ["Seleciona arquivo .TXT.", "Identifica colunas pelo nome no cabeçalho.", "Valida e formata CPF/CNPJ, valores e datas.", "Gera XLSX na mesma pasta do TXT."],
-        "en": ["Select .TXT file.", "Identify columns from header.", "Validate and format CPF/CNPJ, values and dates.", "Generate XLSX in same folder."],
-        "es": ["Selecciona archivo .TXT.", "Identifica columnas.", "Valida y formatea CPF/CNPJ.", "Genera XLSX en la misma carpeta."]
-      },
-      "codeSnippet": "def _validar_cpf(digits: str) -> bool:\n    if len(digits) != 11 or digits == digits[0] * 11:\n        return False\n    # algoritmo módulo 11 - Receita Federal",
-      "codeLanguage": "python",
-      "codeFilename": "txt_para_xlsx.py",
-      "category": "product",
-      "status": "completed",
-      "year": "2024",
-      "context": "CCOBI · 2024",
-      "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
-      "links": {},
-      "order": 3
-    },
-    {
-      "id": "automacao-assinatura-lotes-dou",
-      "title": "Automação Assinatura de Lotes DOU – SIFAMA",
-      "image": "/images/portfolio/ruann/automacao-assinatura-lotes-dou.jpg",
-      "color": "#7C3AED",
-      "description": {
-        "pt": "Automação para assinatura de lotes no DOU pelo SIFAMA/ANTT. Filtros por data, tipo e fiscalização. Tkinter e .exe PyInstaller.",
-        "en": "DOU batch signing automation via SIFAMA/ANTT. Date, type and inspection filters. Tkinter and PyInstaller .exe.",
-        "es": "Automatización firma de lotes DOU vía SIFAMA/ANTT. Filtros por fecha, tipo y fiscalización."
-      },
-      "longDescription": {
-        "pt": "Automação para assinar lotes de publicação no DOU através do SIFAMA da ANTT. Filtros por período, tipo de publicação e fiscalização. Selenium para preencher filtros e acionar assinatura com certificado digital.",
-        "en": "Automation to sign DOU publication batches through ANTT's SIFAMA with digital certificate.",
-        "es": "Automatización para firmar lotes DOU a través del SIFAMA de ANTT."
-      },
-      "technologies": ["Python", "Selenium", "Tkinter", "PyInstaller", "ANTT"],
-      "features": {
-        "pt": ["Filtros por data, tipo de publicação e fiscalização", "Pesquisa e assinatura automática de lotes", "Constantes centralizadas para manutenção", "Empacotamento em .exe com PyInstaller"],
-        "en": ["Date, publication type and inspection filters", "Automatic batch search and signing", "Centralized constants for maintenance", "PyInstaller .exe packaging"],
-        "es": ["Filtros por fecha, tipo y fiscalización", "Búsqueda y firma automática", "Constantes centralizadas", "Empaquetado .exe PyInstaller"]
-      },
-      "howItWorks": {
-        "pt": ["Informa credenciais e define filtros.", "Acessa Consultar/Assinar Lote Publicação DOU.", "Para cada lote, aciona assinatura com certificado.", "Constantes de IDs centralizadas no código."],
-        "en": ["Enter credentials and set filters.", "Access DOU batch signing screen.", "For each batch, trigger signing with certificate.", "Centralized element ID constants."],
-        "es": ["Informa credenciales y filtros.", "Accede a firma de lotes DOU.", "Para cada lote, firma con certificado.", "Constantes de IDs centralizadas."]
-      },
-      "codeSnippet": "TIPOS_PUBLICACAO = {\n    \"Notificação de Autuação\": \"1\",\n    \"Notificação de Multa\": \"2\",\n    \"Cancelamento\": \"4\",\n}",
-      "codeLanguage": "python",
-      "codeFilename": "automacao_assinatura_lotes.py",
-      "category": "product",
-      "status": "completed",
-      "year": "2024",
-      "context": "CCOBI · 2024",
-      "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
-      "links": {},
-      "order": 4
-    },
-    {
-      "id": "comparacao-bases-vencimento",
-      "title": "Comparação de Bases por Ano de Vencimento",
-      "image": "/images/portfolio/ruann/comparacao-bases-vencimento.jpg",
-      "color": "#CA8A04",
-      "description": {
-        "pt": "Streamlit para comparar bases antiga x nova por ano de vencimento. Histórico SQLite e exportação Excel.",
-        "en": "Streamlit to compare old vs new databases by due year. SQLite history and Excel export.",
-        "es": "Streamlit para comparar bases antigua x nueva por año de vencimiento. Historial SQLite."
-      },
-      "longDescription": {
-        "pt": "Aplicação Streamlit que compara base antiga com nova, extrai ano de vencimento e mostra quantos autos saíram e entraram por ano. Cada execução salva em SQLite com histórico de exportações.",
-        "en": "Streamlit app comparing old and new databases by due year, tracking entries and exits per year with SQLite history.",
-        "es": "App Streamlit que compara bases por año de vencimiento con historial SQLite."
-      },
-      "technologies": ["Python", "Streamlit", "SQLite", "Pandas", "Excel"],
-      "features": {
-        "pt": ["Comparação base antiga x nova por ano", "Cálculo de autos que saíram e entraram", "Histórico em SQLite", "Exportação Excel na pasta historico_exportacoes"],
-        "en": ["Old vs new database comparison by year", "Records entered and exited calculation", "SQLite history", "Excel export to history folder"],
-        "es": ["Comparación base antigua x nueva", "Cálculo de autos que salieron/entraron", "Historial SQLite", "Exportación Excel"]
-      },
-      "howItWorks": {
-        "pt": ["Upload das duas planilhas.", "Sistema adiciona coluna Ano pelo vencimento.", "Cruza bases e calcula saídas/entradas por ano.", "Salva execução no SQLite e exporta Excel."],
-        "en": ["Upload both spreadsheets.", "System adds Year column from due date.", "Cross-references and calculates per year.", "Saves to SQLite and exports Excel."],
-        "es": ["Upload de planillas.", "Agrega columna Año.", "Cruza y calcula por año.", "Guarda en SQLite y exporta."]
-      },
-      "codeSnippet": "CREATE TABLE IF NOT EXISTS comparacoes (\n    id TEXT PRIMARY KEY,\n    data_hora TEXT NOT NULL,\n    total_sairam INTEGER NOT NULL,\n    total_entraram INTEGER NOT NULL\n)",
-      "codeLanguage": "python",
-      "codeFilename": "historico_db.py",
-      "category": "marketing",
-      "status": "completed",
-      "year": "2024",
-      "context": "CCOBI · 2024",
-      "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
-      "links": {},
-      "order": 5
+      "links": { "github": "https://github.com/NatiivaZ/ccobi-inscricao-serasa" },
+      "order": 7
     },
     {
       "id": "baixas-serasa",
-      "title": "Automação Baixas SERASA",
-      "image": "/images/portfolio/ruann/baixas-serasa.jpg",
+      "title": "Baixas SERASA · Portal Experian",
+      "image": "",
       "color": "#DC2626",
       "description": {
         "pt": "Automação desktop para baixas no SERASA Experian: lê Excel/CSV, pesquisa portal, exclui dívidas e grava resultado.",
@@ -249,119 +383,122 @@
       "year": "2024",
       "context": "CCOBI · 2024",
       "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
-      "links": {},
-      "order": 6
+      "links": { "github": "https://github.com/NatiivaZ/ccobi-baixas-serasa" },
+      "order": 8
     },
     {
-      "id": "inclusao-cadin",
-      "title": "Automação Inclusão CADIN",
-      "image": "/images/portfolio/ruann/inclusao-cadin.jpg",
-      "color": "#9333EA",
+      "id": "automacao-assinatura-lotes-dou",
+      "title": "Assinatura de Lotes · SIFAMA/DOU",
+      "image": "",
+      "color": "#F59E0B",
       "description": {
-        "pt": "Inclusão de apontamentos no CADIN a partir de planilha. Chrome logado ou nodriver, checkpoint CSV e Excel formatado.",
-        "en": "CADIN record inclusion from spreadsheet. Logged Chrome or nodriver, CSV checkpoint and formatted Excel.",
-        "es": "Inclusión de apuntes en CADIN desde planilla. Chrome logado, checkpoint CSV y Excel."
+        "pt": "Automação para assinatura de lotes no DOU pelo SIFAMA/ANTT. Filtros por data, tipo e fiscalização. Tkinter e .exe PyInstaller.",
+        "en": "DOU batch signing automation via SIFAMA/ANTT. Date, type and inspection filters. Tkinter and PyInstaller .exe.",
+        "es": "Automatización firma de lotes DOU vía SIFAMA/ANTT. Filtros por fecha, tipo y fiscalización."
       },
       "longDescription": {
-        "pt": "Automação para cadastro CADIN com gov.br: lê planilha, preenche campos de inclusão e registra status. Suporta Chrome já logado, modo teste, PyInstaller para .exe.",
-        "en": "CADIN registration automation with gov.br: reads spreadsheet, fills inclusion fields and logs status.",
-        "es": "Automatización CADIN con gov.br: lee planilla y registra status."
+        "pt": "Automação para assinar lotes de publicação no DOU através do SIFAMA da ANTT. Filtros por período, tipo de publicação e fiscalização. Selenium para preencher filtros e acionar assinatura com certificado digital.",
+        "en": "Automation to sign DOU publication batches through ANTT's SIFAMA with digital certificate.",
+        "es": "Automatización para firmar lotes DOU a través del SIFAMA de ANTT."
       },
-      "technologies": ["Python", "Tkinter", "PyInstaller", "CADIN"],
+      "technologies": ["Python", "Selenium", "Tkinter", "PyInstaller", "ANTT"],
       "features": {
-        "pt": ["Leitura planilha CPF/CNPJ, protocolo, auto, vencimento", "Modo Chrome logado com calibração mouse/teclado", "Modo teste e checkpoint CSV", "Exportação Excel em resultados/"],
-        "en": ["Spreadsheet reading with all required fields", "Logged Chrome mode with mouse calibration", "Test mode and CSV checkpoint", "Excel export to results/"],
-        "es": ["Lectura planilla completa", "Modo Chrome logado", "Modo teste y checkpoint CSV", "Exportación Excel"]
+        "pt": ["Filtros por data, tipo de publicação e fiscalização", "Pesquisa e assinatura automática de lotes", "Constantes centralizadas para manutenção", "Empacotamento em .exe com PyInstaller"],
+        "en": ["Date, publication type and inspection filters", "Automatic batch search and signing", "Centralized constants for maintenance", "PyInstaller .exe packaging"],
+        "es": ["Filtros por fecha, tipo y fiscalización", "Búsqueda y firma automática", "Constantes centralizadas", "Empaquetado .exe PyInstaller"]
       },
       "howItWorks": {
-        "pt": ["Abre CADIN no Chrome e faz login gov.br.", "Calibra posições dos campos na interface.", "Para cada linha: cola valores e clica Incluir.", "Checkpoint CSV e Excel final em resultados/."],
-        "en": ["Open CADIN in Chrome with gov.br login.", "Calibrate field positions.", "For each row: paste values and click Include.", "CSV checkpoint and final Excel."],
-        "es": ["Abre CADIN y login gov.br.", "Calibra posiciones.", "Para cada línea: pega valores.", "Checkpoint CSV y Excel final."]
+        "pt": ["Informa credenciais e define filtros.", "Acessa Consultar/Assinar Lote Publicação DOU.", "Para cada lote, aciona assinatura com certificado.", "Constantes de IDs centralizadas no código."],
+        "en": ["Enter credentials and set filters.", "Access DOU batch signing screen.", "For each batch, trigger signing with certificate.", "Centralized element ID constants."],
+        "es": ["Informa credenciales y filtros.", "Accede a firma de lotes DOU.", "Para cada lote, firma con certificado.", "Constantes de IDs centralizadas."]
       },
-      "codeSnippet": "@dataclass\nclass ResultadoInclusao:\n    status: str\n    mensagem: str\n    tentativas: int",
+      "codeSnippet": "TIPOS_PUBLICACAO = {\n    \"Notificação de Autuação\": \"1\",\n    \"Notificação de Multa\": \"2\",\n    \"Cancelamento\": \"4\",\n}",
       "codeLanguage": "python",
-      "codeFilename": "automacao_cadin.py",
+      "codeFilename": "automacao_assinatura_lotes.py",
       "category": "product",
       "status": "completed",
       "year": "2024",
       "context": "CCOBI · 2024",
       "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
-      "links": {},
-      "order": 7
+      "links": { "github": "https://github.com/NatiivaZ/ccobi-assinatura-lotes-sifama" },
+      "order": 9
     },
     {
-      "id": "reclassificador-exportacoes-serasa",
-      "title": "Reclassificador de Exportações SERASA",
-      "image": "/images/portfolio/ruann/reclassificador-exportacoes-serasa.jpg",
-      "color": "#059669",
+      "id": "conversor-regati-txt-xlsx",
+      "title": "Conversor REGATI/PEFIN · TXT → XLSX",
+      "image": "",
+      "color": "#16A34A",
       "description": {
-        "pt": "Streamlit que reclassifica exportações SERASA por faixa de valor (soma por CPF/CNPJ) com downloads separados.",
-        "en": "Streamlit that reclassifies SERASA exports by value range (sum per CPF/CNPJ) with separate downloads.",
-        "es": "Streamlit que reclasifica exportaciones SERASA por rango de valor."
+        "pt": "Converte TXT do REGATI/PEFIN em XLSX padronizado. Validação CPF/CNPJ (Receita Federal), interface Tkinter e CLI.",
+        "en": "Converts REGATI/PEFIN TXT to standardized XLSX. CPF/CNPJ validation, Tkinter GUI and CLI.",
+        "es": "Convierte TXT REGATI/PEFIN a XLSX estandarizado. Validación CPF/CNPJ, interfaz Tkinter y CLI."
       },
       "longDescription": {
-        "pt": "Ferramenta para pós-processamento de exportações SERASA. Detecta colunas, recalcula soma por documento e gera arquivos Excel por faixa de valor.",
-        "en": "Post-processing tool for SERASA exports with per-document value summation and range-based Excel files.",
-        "es": "Herramienta de post-procesamiento de exportaciones SERASA por rango de valor."
+        "pt": "Ferramenta para conversão de arquivos TXT exportados do REGATI/PEFIN em planilhas Excel. Colunas detectadas pelo cabeçalho, CPF/CNPJ validado pelo algoritmo da Receita Federal. Interface gráfica ou linha de comando.",
+        "en": "Tool to convert REGATI/PEFIN TXT exports to Excel spreadsheets with official CPF/CNPJ validation.",
+        "es": "Herramienta para convertir TXT REGATI/PEFIN a Excel con validación CPF/CNPJ."
       },
-      "technologies": ["Python", "Streamlit", "Pandas", "Openpyxl", "Excel"],
+      "technologies": ["Python", "Tkinter", "XlsxWriter", "Validação CPF/CNPJ"],
       "features": {
-        "pt": ["Upload planilha Excel tratada", "Agrupamento por CPF/CNPJ normalizado", "Faixas: até R$999, R$500-999, acima R$1000", "Downloads separados por faixa"],
-        "en": ["Treated Excel upload", "Normalized CPF/CNPJ grouping", "Value ranges with separate files", "Per-range downloads"],
-        "es": ["Upload Excel tratado", "Agrupamiento CPF/CNPJ", "Rangos de valor", "Descargas separadas"]
+        "pt": ["Detecção de colunas pelo cabeçalho do TXT", "Validação CPF/CNPJ módulo 11", "Formatação de máscaras e datas", "Geração XLSX com timestamp no nome"],
+        "en": ["Column detection from TXT header", "CPF/CNPJ module 11 validation", "Mask and date formatting", "XLSX generation with timestamp"],
+        "es": ["Detección de columnas por cabecera", "Validación CPF/CNPJ módulo 11", "Formato de máscaras y fechas", "Generación XLSX con timestamp"]
       },
       "howItWorks": {
-        "pt": ["Upload da planilha na interface Streamlit.", "Confirma colunas Auto, CPF/CNPJ e Valor.", "Agrupa por documento e soma valores.", "Baixa arquivos por faixa e resumo."],
-        "en": ["Upload spreadsheet in Streamlit.", "Confirm Auto, CPF/CNPJ and Value columns.", "Group by document and sum values.", "Download per-range files."],
-        "es": ["Upload planilla.", "Confirma columnas.", "Agrupa y suma.", "Descarga por rango."]
+        "pt": ["Seleciona arquivo .TXT.", "Identifica colunas pelo nome no cabeçalho.", "Valida e formata CPF/CNPJ, valores e datas.", "Gera XLSX na mesma pasta do TXT."],
+        "en": ["Select .TXT file.", "Identify columns from header.", "Validate and format CPF/CNPJ, values and dates.", "Generate XLSX in same folder."],
+        "es": ["Selecciona archivo .TXT.", "Identifica columnas.", "Valida y formatea CPF/CNPJ.", "Genera XLSX en la misma carpeta."]
       },
-      "codeSnippet": "def normalizar_cpf_cnpj(valor):\n    digitos = re.sub(r\"\\D\", \"\", str(valor).strip())\n    return digitos if digitos else None",
+      "codeSnippet": "def _validar_cpf(digits: str) -> bool:\n    if len(digits) != 11 or digits == digits[0] * 11:\n        return False\n    # algoritmo módulo 11 - Receita Federal",
       "codeLanguage": "python",
-      "codeFilename": "app.py",
-      "category": "marketing",
+      "codeFilename": "txt_para_xlsx.py",
+      "category": "product",
       "status": "completed",
       "year": "2024",
       "context": "CCOBI · 2024",
       "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
-      "links": {},
-      "order": 8
+      "links": { "github": "https://github.com/NatiivaZ/ccobi-conversor-txt-xlsx" },
+      "order": 10
     },
     {
       "id": "portifolio",
       "title": "Portfólio (este site)",
-      "image": "/images/portfolio/ruann/portifolio.jpg",
+      "image": "",
       "color": "#1F2937",
       "description": {
-        "pt": "Site de portfólio com carrossel de projetos e foco em back-end, dados e automação.",
-        "en": "Portfolio website with project carousel focused on back-end, data and automation.",
-        "es": "Sitio de portafolio con carrusel de proyectos enfocado en back-end y datos."
+        "pt": "Site de portfólio com projetos CCOBI, foco em back-end, dados, API e automação.",
+        "en": "Portfolio website with CCOBI projects focused on back-end, data, API and automation.",
+        "es": "Sitio de portafolio con proyectos CCOBI enfocado en back-end, datos, API y automatización."
       },
       "longDescription": {
-        "pt": "Site desenvolvido para apresentar perfil profissional com foco em back-end, dados, SQL e automação. React, TypeScript, Vite, Tailwind CSS e Framer Motion.",
-        "en": "Website to showcase professional profile focused on back-end, data, SQL and automation. React, TypeScript, Vite, Tailwind.",
-        "es": "Sitio para presentar perfil profesional en back-end, datos y automatización."
+        "pt": "Site desenvolvido para apresentar perfil profissional com foco em back-end, dados, SQL e automação. Next.js, TypeScript e Tailwind CSS, com deploy automático no GitHub Pages.",
+        "en": "Website to showcase professional profile focused on back-end, data, SQL and automation. Next.js, TypeScript and Tailwind with GitHub Pages deploy.",
+        "es": "Sitio para presentar perfil profesional en back-end, datos y automatización. Next.js, TypeScript y Tailwind."
       },
-      "technologies": ["React", "TypeScript", "Vite", "Tailwind"],
+      "technologies": ["Next.js", "TypeScript", "React", "Tailwind"],
       "features": {
-        "pt": ["Seções Hero, Sobre, Habilidades, Projetos e Contato", "Páginas de detalhe com trechos de código", "Carrossel de projetos em loop", "Dados centralizados em src/data/"],
-        "en": ["Hero, About, Skills, Projects and Contact sections", "Detail pages with code snippets", "Looping project carousel", "Centralized data in src/data/"],
-        "es": ["Secciones Hero, Sobre, Habilidades, Proyectos", "Páginas de detalle con código", "Carrusel de proyectos", "Datos centralizados"]
+        "pt": ["Seções Hero, Sobre, Stack, Projetos e Contato", "Modal de detalhe com trechos de código", "Links para repositórios no GitHub", "Deploy automático via GitHub Actions"],
+        "en": ["Hero, About, Stack, Projects and Contact sections", "Detail modal with code snippets", "Links to GitHub repositories", "Automatic deploy via GitHub Actions"],
+        "es": ["Secciones Hero, Sobre, Stack, Proyectos y Contacto", "Modal de detalle con código", "Enlaces a repositorios GitHub", "Deploy automático vía GitHub Actions"]
       },
       "howItWorks": {
-        "pt": ["Página inicial com todas as seções.", "Cada projeto tem página /projeto/:slug.", "Roteamento com React Router.", "Dados em src/data/projects.ts."],
-        "en": ["Home page with all sections.", "Each project has /projeto/:slug page.", "React Router routing.", "Data in src/data/projects.ts."],
-        "es": ["Página inicial con secciones.", "Cada proyecto en /projeto/:slug.", "React Router.", "Datos en projects.ts."]
+        "pt": ["Página inicial com todas as seções.", "Cada projeto abre um modal com detalhes.", "Dados centralizados em data/projects.json.", "Push na main dispara o deploy no GitHub Pages."],
+        "en": ["Home page with all sections.", "Each project opens a detail modal.", "Data centralized in data/projects.json.", "Push to main triggers GitHub Pages deploy."],
+        "es": ["Página inicial con secciones.", "Cada proyecto abre un modal.", "Datos en data/projects.json.", "Push a main dispara el deploy."]
       },
-      "codeSnippet": "export function getProjectBySlug(slug: string) {\n  return projects.find((p) => p.slug === slug);\n}",
+      "codeSnippet": "export function getProjects(): Project[] {\n  return projectsData.projects.sort((a, b) => a.order - b.order)\n}",
       "codeLanguage": "typescript",
-      "codeFilename": "src/data/projects.ts",
+      "codeFilename": "lib/projects.ts",
       "category": "marketing",
       "status": "completed",
-      "year": "2024",
+      "year": "2025",
       "context": "Pessoal",
       "role": { "pt": "Desenvolvedor", "en": "Developer", "es": "Desarrollador" },
-      "links": { "live": "https://natiivaz.github.io/Portifolio-/" },
-      "order": 9
+      "links": {
+        "live": "https://natiivaz.github.io/Portifolio-/",
+        "github": "https://github.com/NatiivaZ/Portifolio-"
+      },
+      "order": 11
     }
   ]
 }

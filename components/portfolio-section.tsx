@@ -11,7 +11,7 @@ export function PortfolioSection() {
   const { language } = useLanguage()
   const content = portfolioContent[language]
   const projects = getProjects()
-  const [tab, setTab] = useState<"product" | "marketing">("product")
+  const [tab, setTab] = useState<"product" | "marketing">("marketing")
   const [selected, setSelected] = useState<Project | null>(null)
   const [modalOpen, setModalOpen] = useState(false)
 
@@ -41,7 +41,7 @@ export function PortfolioSection() {
             {content.subtitle}
           </p>
           <p className="text-sm text-white/50 mb-8">
-            {projects.length} projetos · Python, SQL, Selenium, Streamlit
+            {projects.length} projetos · Python · TypeScript · NestJS · Streamlit
           </p>
 
           <div className="flex justify-center gap-4 mb-8 flex-wrap">
@@ -105,6 +105,11 @@ export function PortfolioSection() {
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
+                  {project.context?.includes("Destaque") && (
+                    <span className="inline-block text-[10px] uppercase tracking-wider bg-sky-500/90 text-white px-2 py-0.5 rounded mb-1">
+                      Destaque
+                    </span>
+                  )}
                   <h3 className="text-lg font-bold text-white">{project.title}</h3>
                 </div>
               </div>

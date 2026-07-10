@@ -20,7 +20,7 @@ export interface Project {
   year: string
   context?: string
   role: Record<Language, string>
-  links?: { live?: string }
+  links?: { live?: string; github?: string }
   gallery?: string[]
   metrics?: Array<{ label: Record<Language, string>; value: string }>
   order: number
