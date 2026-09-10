@@ -27,19 +27,22 @@
           "Inclusão e exclusão PEFIN em lote com fila e rate limit",
           "Dashboard em tempo real com status por documento",
           "Webhooks para retorno assíncrono de processamento",
-          "Separação clara entre homologação e operação"
+          "Separação clara entre homologação e operação",
+          "Concorrência adaptativa e circuit breaker: reduz o ritmo de envio automaticamente quando a taxa de falhas sobe"
         ],
         "en": [
           "Bulk PEFIN inclusion/exclusion with queue and rate limit",
           "Real-time dashboard with per-document status",
           "Webhooks for asynchronous processing feedback",
-          "Clear separation between homologation and live environments"
+          "Clear separation between homologation and live environments",
+          "Adaptive concurrency and circuit breaker: automatically throttles throughput when the failure rate rises"
         ],
         "es": [
           "Inclusión/exclusión PEFIN en lote con cola y rate limit",
           "Dashboard en tiempo real con status por documento",
           "Webhooks para retorno asíncrono",
-          "Separación entre homologación y operación"
+          "Separación entre homologación y operación",
+          "Concurrencia adaptativa y circuit breaker: reduce el ritmo de envío automáticamente cuando sube la tasa de fallos"
         ]
       },
       "howItWorks": {
@@ -90,9 +93,9 @@
         "es": "App web Streamlit para autos ANTT: upload SERASA y Deuda Activa, comparación, gráficos Plotly y exportación Excel."
       },
       "longDescription": {
-        "pt": "Aplicação web em Streamlit para análise comparativa entre a base SERASA e a base de Dívida Ativa da ANTT. Permite configurar colunas, cruza os dados e gera gráficos interativos com Plotly além de exportação em Excel formatada.",
-        "en": "Streamlit web application for comparative analysis between SERASA and ANTT Active Debt databases. Configurable columns, data cross-referencing, Plotly charts and formatted Excel export.",
-        "es": "Aplicación web Streamlit para análisis comparativo entre base SERASA y Deuda Activa de ANTT."
+        "pt": "Aplicação web em Streamlit para análise comparativa entre a base SERASA e a base de Dívida Ativa da ANTT. Permite configurar colunas, cruza os dados e gera gráficos interativos com Plotly além de exportação em Excel formatada. Inclui motor de classificação configurável por perfil (órgãos, bancos, leasing) e calculadora de decadência/prescrição dos autos.",
+        "en": "Streamlit web application for comparative analysis between SERASA and ANTT Active Debt databases. Configurable columns, data cross-referencing, Plotly charts and formatted Excel export. Includes a configurable classification engine (agencies, banks, leasing) and a statute-of-limitations (decadência/prescrição) calculator.",
+        "es": "Aplicación web Streamlit para análisis comparativo entre base SERASA y Deuda Activa de ANTT. Incluye un motor de clasificación configurable (órganos, bancos, leasing) y una calculadora de decadencia/prescripción."
       },
       "technologies": [
         "Python",
@@ -106,19 +109,22 @@
           "Upload de planilhas SERASA e Dívida Ativa",
           "Configuração flexível de colunas",
           "Cruzamento e identificação de divergências",
-          "Gráficos Plotly e exportação Excel formatada"
+          "Gráficos Plotly e exportação Excel formatada",
+          "Motor de classificação configurável e calculadora de decadência/prescrição"
         ],
         "en": [
           "SERASA and Active Debt spreadsheet upload",
           "Flexible column configuration",
           "Cross-referencing and divergence detection",
-          "Plotly charts and formatted Excel export"
+          "Plotly charts and formatted Excel export",
+          "Configurable classification engine and statute-of-limitations calculator"
         ],
         "es": [
           "Upload de planillas SERASA y Deuda Activa",
           "Configuración flexible de columnas",
           "Cruce e identificación de divergencias",
-          "Gráficos Plotly y exportación Excel"
+          "Gráficos Plotly y exportación Excel",
+          "Motor de clasificación configurable y calculadora de decadencia/prescripción"
         ]
       },
       "howItWorks": {
@@ -169,9 +175,9 @@
         "es": "Streamlit para comparar bases antigua x nueva por año de vencimiento. Historial SQLite."
       },
       "longDescription": {
-        "pt": "Aplicação Streamlit que compara base antiga com nova, extrai ano de vencimento e mostra quantos autos saíram e entraram por ano. Cada execução salva em SQLite com histórico de exportações.",
-        "en": "Streamlit app comparing old and new databases by due year, tracking entries and exits per year with SQLite history.",
-        "es": "App Streamlit que compara bases por año de vencimiento con historial SQLite."
+        "pt": "Aplicação Streamlit que compara base antiga com nova, extrai ano de vencimento e mostra quantos autos saíram e entraram por ano. Cada execução salva em SQLite com histórico de exportações. Também inclui um modo de análise de prescrição, cruzando os autos com publicações do Diário Oficial da União (DOU).",
+        "en": "Streamlit app comparing old and new databases by due year, tracking entries and exits per year with SQLite history. Also includes a statute-of-limitations analysis mode, cross-referencing records with Diário Oficial da União (DOU) publications.",
+        "es": "App Streamlit que compara bases por año de vencimiento con historial SQLite. También incluye un modo de análisis de prescripción, cruzando los autos con publicaciones del Diario Oficial (DOU)."
       },
       "technologies": [
         "Python",
@@ -185,19 +191,22 @@
           "Comparação base antiga x nova por ano",
           "Cálculo de autos que saíram e entraram",
           "Histórico em SQLite",
-          "Exportação Excel na pasta historico_exportacoes"
+          "Exportação Excel na pasta historico_exportacoes",
+          "Modo de análise de prescrição com cruzamento de dados do Diário Oficial da União (DOU)"
         ],
         "en": [
           "Old vs new database comparison by year",
           "Records entered and exited calculation",
           "SQLite history",
-          "Excel export to history folder"
+          "Excel export to history folder",
+          "Statute-of-limitations analysis mode cross-referencing Diário Oficial da União (DOU) data"
         ],
         "es": [
           "Comparación base antigua x nueva",
           "Cálculo de autos que salieron/entraron",
           "Historial SQLite",
-          "Exportación Excel"
+          "Exportación Excel",
+          "Modo de análisis de prescripción con cruce de datos del Diario Oficial (DOU)"
         ]
       },
       "howItWorks": {
@@ -342,19 +351,22 @@
           "Leitura planilha CPF/CNPJ, protocolo, auto, vencimento",
           "Modo Chrome logado com calibração mouse/teclado",
           "Modo teste e checkpoint CSV",
-          "Exportação Excel em resultados/"
+          "Exportação Excel em resultados/",
+          "Automação via CDP (nodriver) em navegador real, mais resiliente a bloqueios do que Selenium tradicional"
         ],
         "en": [
           "Spreadsheet reading with all required fields",
           "Logged Chrome mode with mouse calibration",
           "Test mode and CSV checkpoint",
-          "Excel export to results/"
+          "Excel export to results/",
+          "CDP-based automation (nodriver) on a real browser, more resilient to blocking than traditional Selenium"
         ],
         "es": [
           "Lectura planilla completa",
           "Modo Chrome logado",
           "Modo teste y checkpoint CSV",
-          "Exportación Excel"
+          "Exportación Excel",
+          "Automatización vía CDP (nodriver) en navegador real, más resiliente a bloqueos que Selenium tradicional"
         ]
       },
       "howItWorks": {
@@ -421,19 +433,22 @@
           "Baixas jurídicas em lote a partir de planilha",
           "Integração com Consulta Credora / CADIN",
           "Checkpoint e retomada sem reprocessar tudo",
-          "Exportação Excel com status e mensagens"
+          "Exportação Excel com status e mensagens",
+          "Automação via CDP (nodriver) em navegador real, mais resiliente a bloqueios do que Selenium tradicional"
         ],
         "en": [
           "Bulk legal write-offs from spreadsheet",
           "Consulta Credora / CADIN integration",
           "Checkpoint and safe resume",
-          "Excel export with status and messages"
+          "Excel export with status and messages",
+          "CDP-based automation (nodriver) on a real browser, more resilient to blocking than traditional Selenium"
         ],
         "es": [
           "Bajas jurídicas en lote desde planilla",
           "Integración Consulta Credora / CADIN",
           "Checkpoint y reanudación segura",
-          "Exportación Excel con status"
+          "Exportación Excel con status",
+          "Automatización vía CDP (nodriver) en navegador real, más resiliente a bloqueos que Selenium tradicional"
         ]
       },
       "howItWorks": {
