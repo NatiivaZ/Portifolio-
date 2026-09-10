@@ -50,7 +50,7 @@ export const heroContent = {
     highlights: [
       "10+ projetos em automação, API e análise de dados.",
       "Python · SQL · TypeScript · Next.js — stack principal.",
-      "Foco em back-end, dados e conformidade regulatória.",
+      "Foco em dados, automação e conformidade regulatória.",
       "Integrações SIFAMA, SERASA, CADIN e PEFIN.",
     ],
   },
@@ -64,7 +64,7 @@ export const heroContent = {
     highlights: [
       "10+ projects in automation, API and data analysis.",
       "Python · SQL · TypeScript · Next.js — main stack.",
-      "Focus on back-end, data and regulatory compliance.",
+      "Focus on data, automation and regulatory compliance.",
       "SIFAMA, SERASA, CADIN and PEFIN integrations.",
     ],
   },
@@ -78,7 +78,7 @@ export const heroContent = {
     highlights: [
       "10+ proyectos en automatización, API y análisis de datos.",
       "Python · SQL · TypeScript · Next.js — stack principal.",
-      "Enfoque en back-end, datos y conformidad regulatoria.",
+      "Enfoque en datos, automatización y conformidad regulatoria.",
       "Integraciones SIFAMA, SERASA, CADIN y PEFIN.",
     ],
   },
@@ -154,7 +154,7 @@ export const aboutContent = {
   pt: {
     title: "SOBRE MIM",
     intro: [
-      "Atuo na ANTT, nas unidades SUDEG, GEAUT e CCOBI, com foco em back-end, análise de dados e automação aplicada a processos regulatórios. O núcleo do meu trabalho é extrair dados de autos de infração (cubo multas e bases correlatas), cruzar informações e validar se o processo e o auto observaram o rito processual exigido para inscrição em cadastros como SERASA, Dívida Ativa e CADIN.",
+      "Atuo na ANTT, nas unidades SUDEG, GEAUT e CCOBI, com foco em dados, automação e desenvolvimento full-stack aplicados a processos regulatórios. O núcleo do meu trabalho é extrair dados de autos de infração (cubo multas e bases correlatas), cruzar informações e validar se o processo e o auto observaram o rito processual exigido para inscrição em cadastros como SERASA, Dívida Ativa e CADIN.",
       "Uso SQL em cubos e bancos para tratar bases volumosas, construir consultas e relatórios que apoiam decisões. Desenvolvo automações em Python para integrar sistemas, reduzir retrabalho e padronizar entregas.",
       "Busco unir rigor analítico, automação e comunicação clara: processos mais previsíveis, dados confiáveis e entregas que facilitem auditoria e a tomada de decisão.",
     ],
@@ -164,7 +164,7 @@ export const aboutContent = {
   en: {
     title: "ABOUT ME",
     intro: [
-      "I work at ANTT, in the SUDEG, GEAUT and CCOBI units, focusing on back-end, data analysis and automation applied to regulatory processes.",
+      "I work at ANTT, in the SUDEG, GEAUT and CCOBI units, focusing on data, automation and full-stack development applied to regulatory processes.",
       "I use SQL in cubes and databases to process large datasets and build reports. I develop Python automations to integrate systems and reduce rework.",
       "I seek to combine analytical rigor, automation and clear communication for auditable processes and reliable data.",
     ],
@@ -174,7 +174,7 @@ export const aboutContent = {
   es: {
     title: "SOBRE MÍ",
     intro: [
-      "Actúo en ANTT, en las unidades SUDEG, GEAUT y CCOBI, con enfoque en back-end, análisis de datos y automatización aplicada a procesos regulatorios.",
+      "Actúo en ANTT, en las unidades SUDEG, GEAUT y CCOBI, con enfoque en datos, automatización y desarrollo full-stack aplicados a procesos regulatorios.",
       "Uso SQL en cubos y bases de datos para tratar volúmenes grandes y construir informes. Desarrollo automatizaciones en Python para integrar sistemas.",
       "Busco unir rigor analítico, automatización y comunicación clara para procesos auditables y datos confiables.",
     ],
@@ -277,9 +277,9 @@ export const experiences = [
       es: "Desarrollo de automatizaciones y plataformas: API PEFIN, comparador SERASA × Deuda Activa, inclusión/bajas CADIN y flujos SIFAMA/SERASA.",
     },
     achievements: {
-      pt: ["10+ soluções desktop e web em produção", "Plataforma PEFIN com filas, webhooks e dashboard", "Integração SIFAMA, SERASA, CADIN e PEFIN"],
-      en: ["10+ desktop and web solutions in production", "PEFIN platform with queues, webhooks and dashboard", "SIFAMA, SERASA, CADIN and PEFIN integration"],
-      es: ["10+ soluciones desktop y web en producción", "Plataforma PEFIN con colas, webhooks y dashboard", "Integración SIFAMA, SERASA, CADIN y PEFIN"],
+      pt: ["10+ soluções desktop e web entregues", "Plataforma PEFIN com filas, webhooks e dashboard", "Integração SIFAMA, SERASA, CADIN e PEFIN"],
+      en: ["10+ desktop and web solutions delivered", "PEFIN platform with queues, webhooks and dashboard", "SIFAMA, SERASA, CADIN and PEFIN integration"],
+      es: ["10+ soluciones desktop y web entregadas", "Plataforma PEFIN con colas, webhooks y dashboard", "Integración SIFAMA, SERASA, CADIN y PEFIN"],
     },
     skills: {
       pt: ["Python", "TypeScript", "NestJS", "Streamlit", "Selenium"],
