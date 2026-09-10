@@ -2,7 +2,7 @@ export type Language = "pt" | "en" | "es"
 
 export const siteConfig = {
   name: "Ruan Natividade",
-  title: "Ruan Natividade | Back-end, Dados & Automação",
+  title: "Ruan Natividade | Dados, Automação & Full-Stack",
   email: "ruan.natividade1@icloud.com",
   whatsapp: "",
   social: {
@@ -44,12 +44,12 @@ export const heroContent = {
     welcome: "Bem-vindo ao meu",
     welcomeHighlight: "portfólio pessoal",
     badge: "Disponível para oportunidades",
-    title: "Desenvolvedor Back-end · Dados, SQL & Automação",
+    title: "Analista de Dados & Automação · Desenvolvedor Full-Stack",
     subtitle:
-      "SQL e cubos para análise; validação de rito processual e inscrições (SERASA, Dívida Ativa, CADIN). Plataforma PEFIN e automações que integram sistemas e reduzem retrabalho.",
+      "SQL e cubos para análise; validação de rito processual e inscrições (SERASA, Dívida Ativa, CADIN). Plataforma PEFIN full-stack (NestJS, Next.js) e automações que integram sistemas e reduzem retrabalho.",
     highlights: [
       "10+ projetos em automação, API e análise de dados.",
-      "Python · TypeScript · SQL · NestJS — stack principal.",
+      "Python · SQL · TypeScript · Next.js — stack principal.",
       "Foco em back-end, dados e conformidade regulatória.",
       "Integrações SIFAMA, SERASA, CADIN e PEFIN.",
     ],
@@ -58,12 +58,12 @@ export const heroContent = {
     welcome: "Welcome to my",
     welcomeHighlight: "personal portfolio",
     badge: "Open to opportunities",
-    title: "Back-end Developer · Data, SQL & Automation",
+    title: "Data & Automation Analyst · Full-Stack Developer",
     subtitle:
-      "SQL and cubes for analysis; procedural validation and registrations (SERASA, Active Debt, CADIN). PEFIN platform and automations that integrate systems and reduce rework.",
+      "SQL and cubes for analysis; procedural validation and registrations (SERASA, Active Debt, CADIN). Full-stack PEFIN platform (NestJS, Next.js) and automations that integrate systems and reduce rework.",
     highlights: [
       "10+ projects in automation, API and data analysis.",
-      "Python · TypeScript · SQL · NestJS — main stack.",
+      "Python · SQL · TypeScript · Next.js — main stack.",
       "Focus on back-end, data and regulatory compliance.",
       "SIFAMA, SERASA, CADIN and PEFIN integrations.",
     ],
@@ -72,12 +72,12 @@ export const heroContent = {
     welcome: "Bienvenido a mi",
     welcomeHighlight: "portafolio personal",
     badge: "Disponible para oportunidades",
-    title: "Desarrollador Back-end · Datos, SQL y Automatización",
+    title: "Analista de Datos y Automatización · Desarrollador Full-Stack",
     subtitle:
-      "SQL y cubos para análisis; validación de rito procesal e inscripciones (SERASA, Deuda Activa, CADIN). Plataforma PEFIN y automatizaciones que integran sistemas y reducen retrabajo.",
+      "SQL y cubos para análisis; validación de rito procesal e inscripciones (SERASA, Deuda Activa, CADIN). Plataforma PEFIN full-stack (NestJS, Next.js) y automatizaciones que integran sistemas y reducen retrabajo.",
     highlights: [
       "10+ proyectos en automatización, API y análisis de datos.",
-      "Python · TypeScript · SQL · NestJS — stack principal.",
+      "Python · SQL · TypeScript · Next.js — stack principal.",
       "Enfoque en back-end, datos y conformidad regulatoria.",
       "Integraciones SIFAMA, SERASA, CADIN y PEFIN.",
     ],
@@ -87,15 +87,15 @@ export const heroContent = {
 export const technologiesContent = {
   pt: {
     title: "Stack e Ferramentas",
-    subtitle: "Foco em back-end: SQL, cubos de dados, Python e automação",
+    subtitle: "SQL, Python, automação e desenvolvimento full-stack",
   },
   en: {
     title: "Stack and Tools",
-    subtitle: "Back-end focus: SQL, data cubes, Python and automation",
+    subtitle: "SQL, Python, automation and full-stack development",
   },
   es: {
     title: "Stack y Herramientas",
-    subtitle: "Enfoque back-end: SQL, cubos de datos, Python y automatización",
+    subtitle: "SQL, Python, automatización y desarrollo full-stack",
   },
 }
 

@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/language-context"
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
@@ -34,8 +35,11 @@ export function ProjectDetailModal({
       <DialogContent className="max-w-4xl">
         <DialogHeader>
           <DialogTitle>{project.title}</DialogTitle>
+          <DialogDescription>
+            {project.context ? `${project.context} — ${project.title}` : project.title}
+          </DialogDescription>
           {project.context && (
-            <p className="text-sm text-blue-400">{project.context}</p>
+            <p className="text-sm text-blue-400" aria-hidden="true">{project.context}</p>
           )}
         </DialogHeader>
 
